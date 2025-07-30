@@ -13,6 +13,7 @@ export default {
   'menu.categories': 'Book Config',
   'menu.groups': 'Groups',
   'menu.bookTemplates': 'Book Templates',
+  'menu.budget': 'Budget',
   'menu.noteDays': 'Note Days',
   'menu.trash': 'Recycle Bin',
   'menu.login': 'Login Page',
