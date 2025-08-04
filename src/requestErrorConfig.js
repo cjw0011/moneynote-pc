@@ -4,7 +4,7 @@ import { request as umiRequest } from '@umijs/max';
 
 let refreshPromise = null;
 
-const parseJwt = (token) => {
+export const parseJwt = (token) => {
   try {
     const base64 = token.split('.')[1];
     const json = typeof window === 'undefined'
@@ -16,14 +16,18 @@ const parseJwt = (token) => {
   }
 };
 
-const refreshAccessToken = async () => {
+export const refreshAccessToken = async () => {
   if (!refreshPromise) {
     const refreshToken = localStorage.getItem('refreshToken');
-    if (!refreshToken) {
-      throw new Error('no refresh token');
+    const accessToken = localStorage.getItem('accessToken');
+    if (!refreshToken || !accessToken) {
+      throw new Error('no refresh or access token');
     }
     refreshPromise = umiRequest('refresh', {
       method: 'POST',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
       data: { refreshToken },
       skipErrorHandler: true,
     })
