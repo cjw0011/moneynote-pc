@@ -19,6 +19,13 @@ export const errorConfig = {
     // 错误接收及处理
     errorHandler: (error, opts) => {
       if (opts?.skipErrorHandler) throw error;
+      if (error?.response?.status === 401 && window.location.pathname !== '/user/login') {
+        message.error('登录已过期，请重新登录');
+        localStorage.removeItem('accessToken');
+        sessionStorage.removeItem('accessToken');
+        window.location.href = '/user/login';
+        return;
+      }
       console.log(error);
       // if (error.response.data?.message) {
       //   message.error(error.response.data?.message)
