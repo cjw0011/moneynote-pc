@@ -22,7 +22,11 @@ export default () => {
     {
       title: t('template.label.previewUrl'),
       dataIndex: 'previewUrl',
-      render: (_, record) => <a href={record.previewUrl} target="_blank">{t('template.label.preview.click')}</a>,
+      render: (_, record) => (
+        <a href={record.previewUrl} target="_blank" rel="noreferrer">
+          {t('template.label.preview.click')}
+        </a>
+      ),
       hideInSearch: true,
     },
     {

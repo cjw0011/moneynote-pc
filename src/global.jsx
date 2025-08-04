@@ -2,6 +2,7 @@ import { useIntl } from '@umijs/max';
 import { Button, message, notification } from 'antd';
 import defaultSettings from '../config/defaultSettings';
 import * as Sentry from "@sentry/react";
+import { refreshAccessToken } from './requestErrorConfig';
 
 const { pwa } = defaultSettings;
 const isHttps = document.location.protocol === 'https:';
@@ -106,3 +107,13 @@ window.addEventListener("unhandledrejection", function(e){
   console.log('捕获到异常：', e);
   return true;
 });
+
+setInterval(() => {
+  const refreshToken = localStorage.getItem('refreshToken');
+  const accessToken = localStorage.getItem('accessToken');
+  if (refreshToken && accessToken) {
+    refreshAccessToken().catch((e) => {
+      console.log('failed to refresh token', e);
+    });
+  }
+}, 60 * 1000);

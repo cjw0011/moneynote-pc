@@ -21,7 +21,7 @@ export default () => {
       {/*  <span>{t('footer.qq.group')}: 639653091</span>*/}
       {/*</div>*/}
       <div>
-        &copy; {new Date().getFullYear()} <a href="https://www.moneynote.com" target="_blank">moneynote.com</a>
+        &copy; {new Date().getFullYear()} <a href="https://www.moneynote.com" target="_blank" rel="noreferrer">moneynote.com</a>
         <Divider type="vertical" />
         v{packageJson.version}
         <Divider type="vertical" />
