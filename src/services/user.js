@@ -10,6 +10,9 @@ export async function login(data) {
 export async function logout() {
   return request('logout', {
     method: 'POST',
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('accessToken') ?? ''}`,
+    },
   });
 }
 

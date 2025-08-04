@@ -15,10 +15,13 @@ const AvatarDropdown = () => {
 
   const onMenuClick = async ({ key }) => {
     if (key === 'logout') {
-      localStorage.removeItem('accessToken');
-      sessionStorage.removeItem('accessToken');
-      // await logout();
-      window.location.href = '/user/login';
+      try {
+        await logout();
+      } finally {
+        localStorage.removeItem('accessToken');
+        sessionStorage.removeItem('accessToken');
+        window.location.href = '/user/login';
+      }
     }
     if (key === 'changePassword') {
       show(<ChangePasswordForm />);
