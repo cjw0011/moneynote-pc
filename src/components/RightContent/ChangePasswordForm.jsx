@@ -10,6 +10,9 @@ export default () => {
 
   const successHandler = async () => {
     localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    sessionStorage.removeItem('accessToken');
+    sessionStorage.removeItem('refreshToken');
     setTimeout(function () {
       window.location.href = '/user/login';
     }, 500);

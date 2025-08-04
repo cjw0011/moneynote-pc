@@ -10,9 +10,14 @@ export async function login(data) {
 export async function logout() {
   return request('logout', {
     method: 'POST',
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem('accessToken') ?? ''}`,
-    },
+  });
+}
+
+export async function refresh(data) {
+  return request('refresh', {
+    method: 'POST',
+    data: data,
+    skipErrorHandler: true,
   });
 }
 

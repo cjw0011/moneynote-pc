@@ -26,7 +26,9 @@ export default ({ flowId }) => {
     listType: 'picture-card',
     action: `/api/v1/balance-flows/${flowId}/addFile`,
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("accessToken") ?? ''}`,
+      get Authorization() {
+        return `Bearer ${localStorage.getItem("accessToken") ?? ''}`;
+      },
     },
     isImageUrl(file) {
       return file.isImage;
