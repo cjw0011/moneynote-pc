@@ -20,6 +20,8 @@ const AvatarDropdown = () => {
       } finally {
         localStorage.removeItem('accessToken');
         sessionStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
+        sessionStorage.removeItem('refreshToken');
         window.location.href = '/user/login';
       }
     }

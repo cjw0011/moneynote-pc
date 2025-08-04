@@ -17,6 +17,7 @@ export default () => {
   const handleSubmit = async (values) => {
     const response = await login({ ...values });
     localStorage.setItem('accessToken', response.data.accessToken);
+    localStorage.setItem('refreshToken', response.data.refreshToken);
     setTimeout(() => {
       window.location.href = '/';
     }, 300);
@@ -51,7 +52,14 @@ export default () => {
       windowRef.current.close();
     }
     if (formRef.current?.getFieldValue('remember')) {
-      localStorage.setItem('accessToken', e.data);
+      if (typeof e.data === 'string') {
+        localStorage.setItem('accessToken', e.data);
+      } else {
+        localStorage.setItem('accessToken', e.data.accessToken);
+        if (e.data.refreshToken) {
+          localStorage.setItem('refreshToken', e.data.refreshToken);
+        }
+      }
     }
     window.location.href = '/report';
   }
