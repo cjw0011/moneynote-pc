@@ -117,7 +117,7 @@ export default [
   {
     path: '/budget',
     name: 'budget',
-    icon: 'pie-chart',
+    icon: 'container',
     component: './Budget',
   },
   {
