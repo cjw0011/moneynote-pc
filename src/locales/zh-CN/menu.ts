@@ -13,6 +13,7 @@ export default {
   'menu.categories': '账本配置',
   'menu.bookTemplates': '账本模板',
   'menu.groups': '分组管理',
+  'menu.budget': '预算',
   'menu.noteDays': '提醒事项',
   'menu.trash': '回收站',
   'menu.login': '登录页',

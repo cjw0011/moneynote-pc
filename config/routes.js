@@ -115,6 +115,12 @@ export default [
     component: './Currency',
   },
   {
+    path: '/budget',
+    name: 'budget',
+    icon: 'pie-chart',
+    component: './Budget',
+  },
+  {
     path: '/note-days',
     name: 'noteDays',
     component: './NoteDay',
