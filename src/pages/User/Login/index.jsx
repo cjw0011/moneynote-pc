@@ -16,9 +16,7 @@ export default () => {
 
   const handleSubmit = async (values) => {
     const response = await login({ ...values });
-    if (response.data.remember) {
-      localStorage.setItem('accessToken', response.data.accessToken);
-    }
+    localStorage.setItem('accessToken', response.data.accessToken);
     setTimeout(() => {
       window.location.href = '/';
     }, 300);
