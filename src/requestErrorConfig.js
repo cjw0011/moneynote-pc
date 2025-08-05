@@ -66,7 +66,7 @@ export const errorConfig = {
       let token = localStorage.getItem('accessToken');
       if (token) {
         const { exp } = parseJwt(token);
-        if (exp && exp * 1000 - Date.now() < 60 * 1000) {
+        if (exp && exp * 1000 - Date.now() < 15 * 60 * 1000) {
           try {
             token = await refreshAccessToken();
           } catch (e) {
