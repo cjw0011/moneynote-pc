@@ -49,7 +49,7 @@ export default () => {
   }
   const handleMessage = (e) => {
     if (e.origin !== window.location.origin) return;
-    // 关闭微信登录窗口
+
     if (windowRef.current) {
       windowRef.current.close();
     }
