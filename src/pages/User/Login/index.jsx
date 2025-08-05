@@ -18,6 +18,8 @@ export default () => {
     const response = await login({ ...values });
     localStorage.setItem('accessToken', response.data.accessToken);
     localStorage.setItem('refreshToken', response.data.refreshToken);
+    sessionStorage.setItem('accessToken', response.data.accessToken);
+    sessionStorage.setItem('refreshToken', response.data.refreshToken);
     setTimeout(() => {
       window.location.href = '/';
     }, 300);
@@ -54,10 +56,13 @@ export default () => {
     if (formRef.current?.getFieldValue('remember')) {
       if (typeof e.data === 'string') {
         localStorage.setItem('accessToken', e.data);
+        sessionStorage.setItem('accessToken', e.data);
       } else {
         localStorage.setItem('accessToken', e.data.accessToken);
+        sessionStorage.setItem('accessToken', e.data.accessToken);
         if (e.data.refreshToken) {
           localStorage.setItem('refreshToken', e.data.refreshToken);
+          sessionStorage.setItem('refreshToken', e.data.refreshToken);
         }
       }
     }
